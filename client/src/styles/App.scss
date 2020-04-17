@@ -1,0 +1,207 @@
+@import "normalize.scss";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+textarea,input,div,form {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #03031a; /* fallback for old browsers */
+  font-family: "Montserrat", sans-serif;
+  background: -webkit-linear-gradient(
+    to right,
+    #03031a,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #03031a,
+    #000000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: cover;
+  color: #ffffff;
+}
+
+.container {
+  width: 1240px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  &__menu {
+    list-style: none;
+    a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 2rem;
+    }
+    a:focus {
+      color: rgb(255, 222, 115);
+    }
+    li + li {
+      margin-top: 25px;
+    }
+  }
+}
+
+.simpleEncode {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  button:disabled, label ~ input[type="submit"]:disabled {
+   cursor: not-allowed;
+   pointer-events: none;
+}
+  button {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: transparent;
+    color: #ffffff;
+    outline: none;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-right: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.2s linear;
+  }
+  button:hover {
+    background-color: rgb(255, 255, 255);
+    border-color: #000000;
+    color: #000000;
+  }
+  h1 {
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+  textarea[id="encode"],
+  textarea[id="decode"] {
+    background-color: transparent;
+    border: none;
+    border: 2px solid rgb(255, 222, 115);
+    border-radius: 10px;
+    color: #ffffff;
+    outline: none;
+    padding: 5px 10px;
+    resize: none;
+  }
+  &__result {
+    margin-top: 15px;
+  }
+  &__fileInput {
+    display: flex;
+    align-items: center;
+    &-text {
+      display: flex;
+      align-items: center;
+    }
+    &-level {
+      margin-top: 13px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      input {
+        text-align: center;
+        padding: 5px 0;
+        outline: none;
+        width: 10%;
+        font-weight: 500;
+        border-radius: 5px;
+        color: #ffffff;
+        background-color: transparent;
+        border: 1px solid #ccc;
+      }
+      input:focus {
+        outline: none;
+      }
+      &-description {
+        margin-left: 15px;
+      }
+    }
+    &-file::before {
+      display: block;
+      margin-bottom: 15px;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: red;
+    }
+    &-file::after {
+      display: block;
+      margin-top: 15px;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: red;
+    }
+    &-file {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &-inputs {
+        display: flex;
+        align-items: center;
+      }
+      &-warning {
+        color: rgb(255, 222, 115);
+        margin-top: 15px;
+      }
+    }
+    input[type="file"],
+    input[type="submit"] {
+      display: none;
+    }
+    label {
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 1px;
+      border: 1px solid #ccc;
+      display: inline-block;
+      padding: 6px 12px;
+      margin-right: 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.2s linear;
+    }
+    label:hover {
+      background-color: rgb(255, 255, 255);
+      border-color: #000000;
+      color: #000000;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+export let addPostActionCreater = () => ({type:ADD_POST});
+export let updatePostTextActionCreater = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+export let addMessageActionCreater = () => ({ type: ADD_MESSAGE });
+export let updateMessageTextActionCreater = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
+
+
+let newMessageElement = React.createRef();
+    let addMessage = () => {
+        let action = addMessageActionCreater();
+        props.dispatch(action);
+    };
+    let newMessageChange = () => {
+        let text = newMessageElement.current.value;
+        let action = updateMessageTextActionCreater(text);
+        props.dispatch(action);
+    }	
