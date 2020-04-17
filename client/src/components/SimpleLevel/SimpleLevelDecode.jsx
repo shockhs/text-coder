@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useMemo } from 'react';
 
 const SimpleLevelDecode = () => {
+    const ENDPOINT = 'https://text-coder-app.herokuapp.com/';
     const [decode, setDecode] = useState('');
     const [level, setLevel] = useState('');
     const [result, setResult] = useState('');
@@ -19,7 +20,7 @@ const SimpleLevelDecode = () => {
             body: JSON.stringify({ levelCoding: level, decode: decode, mode: 'text' })
         };
         const fetchTodo = async () => {
-            await fetch(`http://localhost:5000/simple/decode`, options)
+            await fetch(`${ENDPOINT}simple/decode`, options)
                 .then(res => res.json())
                 .then(res => { setResult(res.result) })
         }
@@ -38,7 +39,7 @@ const SimpleLevelDecode = () => {
         <div className="simpleEncode">
             <h1>Enter text for Decode</h1>
             <div className="simpleEncode__fileInput">
-                <form autoComplete="off" action='http://localhost:5000/simple/decode' method='post' encType="multipart/form-data">
+                <form autoComplete="off" action='https://text-coder-app.herokuapp.com/simple/decode' method='post' encType="multipart/form-data">
                     <textarea value={decode} name="decode" id="decode" cols="60" rows="5"
                         onChange={(event) => { setDecode(event.currentTarget.value) }}></textarea>
                     <div className="simpleEncode__fileInput-level">

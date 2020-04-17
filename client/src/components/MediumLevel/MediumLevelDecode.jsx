@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 const MediumLevelDecode = () => {
+    const ENDPOINT = 'https://text-coder-app.herokuapp.com/';
     const [decode, setDecode] = useState('');
     const [result, setResult] = useState('');
     const [error, setError] = useState('');
@@ -17,7 +18,7 @@ const MediumLevelDecode = () => {
             body: JSON.stringify({ decode: decode, mode: 'text' })
         };
         const fetchTodo = async () => {
-            await fetch(`http://localhost:5000/medium/decode`, options)
+            await fetch(`${ENDPOINT}medium/decode`, options)
                 .then(res => res.json())
                 .then(res => {
                     if (res.resultCode === 200) { setError(''); setResult(res.result) }
@@ -39,7 +40,7 @@ const MediumLevelDecode = () => {
         <div className="simpleEncode">
             <h1>Enter text for Decode</h1>
             <div className="simpleEncode__fileInput">
-                <form autoComplete="off" action='http://localhost:5000/medium/decode' method='post' encType="multipart/form-data">
+                <form autoComplete="off" action='https://text-coder-app.herokuapp.com/medium/decode' method='post' encType="multipart/form-data">
                     <textarea value={decode} name="decode" id="decode" cols="60" rows="5"
                         onChange={(event) => { setDecode(event.currentTarget.value) }}></textarea>
                     <div className="simpleEncode__fileInput-text" style={{ marginTop: 13 + 'px' }}>

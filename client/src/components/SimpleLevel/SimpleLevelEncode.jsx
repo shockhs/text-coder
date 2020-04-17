@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 
 
 const SimpleLevelEncode = () => {
+    const ENDPOINT = 'https://text-coder-app.herokuapp.com/';
     const [encode, setEncode] = useState('');
     const [level, setLevel] = useState('');
     const [result, setResult] = useState('');
@@ -19,7 +20,7 @@ const SimpleLevelEncode = () => {
             body: JSON.stringify({ levelCoding: level, encode: encode, mode: 'text' })
         };
         const fetchTodo = async () => {
-            await fetch(`http://localhost:5000/simple/encode`, options)
+            await fetch(`${ENDPOINT}simple/encode`, options)
                 .then(res => res.json())
                 .then(res => { setResult(res.result) })
         }
@@ -39,7 +40,7 @@ const SimpleLevelEncode = () => {
         <div className="simpleEncode">
             <h1>Enter text for Encode</h1>
             <div className="simpleEncode__fileInput">
-                <form autoComplete="off" action='http://localhost:5000/simple/encode' method='post' encType="multipart/form-data">
+                <form autoComplete="off" action='https://text-coder-app.herokuapp.com/simple/encode' method='post' encType="multipart/form-data">
                     <textarea value={encode} name="encode" id="encode" cols="60" rows="5"
                         onChange={(event) => { setEncode(event.currentTarget.value) }}></textarea>
                     <div className="simpleEncode__fileInput-level">
